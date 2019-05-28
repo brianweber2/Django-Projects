@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>In App template: {{ obj.title }}</h1>
+<p>
+{% if obj.description %}
+  {{ obj.description }}
+{% else %}
+  Description coming soon
+{% endif %}
+</p>
+
+${{ obj.price }}
+{% endblock %}
