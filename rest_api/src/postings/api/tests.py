@@ -75,7 +75,7 @@ class BlogPostAPITestCase(APITestCase):
     user_obj = User.objects.first()
     payload = payload_handler(user_obj)
     token_resp = encode_handler(payload)
-    self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token_resp)
+    self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_resp)
 
     data = {
       'title': 'Some random title for testing',
@@ -95,7 +95,7 @@ class BlogPostAPITestCase(APITestCase):
     user_obj = User.objects.first()
     payload = payload_handler(user_obj)
     token_resp = encode_handler(payload)
-    self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token_resp)
+    self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_resp)
 
     response = self.client.put(url, data, format='json')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -113,7 +113,7 @@ class BlogPostAPITestCase(APITestCase):
 
     payload = payload_handler(user_obj)
     token_resp = encode_handler(payload)
-    self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token_resp)
+    self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_resp)
 
     url = blog_post.get_api_url()
     data = {
@@ -139,6 +139,6 @@ class BlogPostAPITestCase(APITestCase):
         'title': 'Some random title for testing123',
         'content': 'Super random'
       }
-      self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+      self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token)
       response = self.client.put(url, data, format='json')
       self.assertEqual(response.status_code, status.HTTP_200_OK)
