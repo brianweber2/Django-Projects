@@ -25,12 +25,16 @@ SECRET_KEY = 'ua8zw83tlsa)spdfx1w6pqphub(0q9b5@9-%kuo_bbhgsho_vj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sdsw04.sd.solarflarecom.com',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Channels
+
+ASGI_APPLICATION = 'example.routing.application'
